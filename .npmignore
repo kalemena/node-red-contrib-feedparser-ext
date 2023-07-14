@@ -1,0 +1,9 @@
+# Ignore everything
+*
+# But these ...
+!package.json
+!32-*
+!README.md
+!LICENSE
+!examples
+!locales
