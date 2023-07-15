@@ -1,0 +1,43 @@
+[
+    {
+        "id": "e468bcf7a6ec520d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "abf1a383007320ec",
+        "type": "debug",
+        "z": "e468bcf7a6ec520d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b51efd91e35dd77d",
+        "type": "feedparse-ext",
+        "z": "e468bcf7a6ec520d",
+        "name": "",
+        "url": "https://www.dealabs.com/rss/hot",
+        "interval": 15,
+        "ignorefirst": false,
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "abf1a383007320ec"
+            ]
+        ]
+    }
+]
