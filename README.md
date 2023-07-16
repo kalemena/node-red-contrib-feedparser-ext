@@ -1,6 +1,11 @@
 node-red-node-feedparser-ext
 ============================
 
+**This repository is a copy/forked from official Node-Red Feedparser**
+
+<a href="https://github.com/node-red/node-red-nodes/tree/master/social/feedparser"></a>
+
+
 A <a href="http://nodered.org" target="_new">Node-RED</a> node to read RSS and Atom feeds.
 
 Install
