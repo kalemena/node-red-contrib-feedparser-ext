@@ -40,13 +40,16 @@ module.exports = function(RED) {
                 feedparser.on('readable', function () {
                     var stream = this, article;
                     while (article = stream.read()) {  // jshint ignore:line
+                        // if: Article UUID never seen or Date updated
                         if (!(article.guid in node.seen) || ( node.seen[article.guid] !== 0 && node.seen[article.guid] != article.date.getTime())) {
                             node.seen[article.guid] = article.date ? article.date.getTime() : 0;
                             var msg = {
                                 topic: article.origlink || article.link,
                                 payload: article.description,
-                                article: article
+                                article: article,
+                                seenCount: Object.keys(node.seen).length
                             };
+
                             if (node.ignorefirst === true && node.donefirst === false) {
                                 // do nothing
                             }
