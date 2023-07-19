@@ -66,6 +66,10 @@ module.exports = function(RED) {
             node.interval_id = setInterval(function() { node.donefirst = true; getFeed(); }, node.interval);
             getFeed();
         }
+        
+        node.on("input", function(msg) {
+            getFeed(msg);
+        });
 
         node.on("close", function() {
             if (this.interval_id != null) {
