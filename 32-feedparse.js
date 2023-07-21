@@ -8,9 +8,9 @@ module.exports = function(RED) {
     function FeedParseNode(n) {
         RED.nodes.createNode(this,n);
         this.url = n.url;
-        if (n.interval > 35790) { this.warn(RED._("feedparse-ext.errors.invalidinterval")) }
-        this.interval = (parseInt(n.interval)||15) * 60000;
-        this.interval_id = null;
+        // if (n.interval > 35790) { this.warn(RED._("feedparse-ext.errors.invalidinterval")) }
+        // this.interval = (parseInt(n.interval)||15) * 60000;
+        // this.interval_id = null;
         this.ignorefirst = n.ignorefirst || false;
         this.seen = {};
         this.donefirst = false;
@@ -63,7 +63,7 @@ module.exports = function(RED) {
                 feedparser.on('meta', function (meta) {});
                 feedparser.on('end', function () {});
             };
-            node.interval_id = setInterval(function() { node.donefirst = true; getFeed(); }, node.interval);
+            // node.interval_id = setInterval(function() { node.donefirst = true; getFeed(); }, node.interval);
             getFeed();
         }
         
@@ -72,9 +72,9 @@ module.exports = function(RED) {
         });
 
         node.on("close", function() {
-            if (this.interval_id != null) {
-                clearInterval(this.interval_id);
-            }
+            //if (this.interval_id != null) {
+            //    clearInterval(this.interval_id);
+            //}
         });
     }
 

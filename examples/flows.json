@@ -20,8 +20,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 360,
-        "y": 100,
+        "x": 900,
+        "y": 180,
         "wires": []
     },
     {
@@ -29,14 +29,43 @@
         "type": "feedparse-ext",
         "z": "e468bcf7a6ec520d",
         "name": "",
-        "url": "https://www.dealabs.com/rss/hot",
-        "interval": 15,
+        "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss.xml",
+        "interval": "60",
         "ignorefirst": false,
-        "x": 150,
-        "y": 100,
+        "x": 510,
+        "y": 180,
         "wires": [
             [
                 "abf1a383007320ec"
+            ]
+        ]
+    },
+    {
+        "id": "a288824ed469869e",
+        "type": "inject",
+        "z": "e468bcf7a6ec520d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "b51efd91e35dd77d"
             ]
         ]
     }
