@@ -64,7 +64,7 @@ module.exports = function(RED) {
                 feedparser.on('end', function () {});
             };
             // node.interval_id = setInterval(function() { node.donefirst = true; getFeed(); }, node.interval);
-            getFeed();
+            // getFeed();
         }
         
         node.on("input", function(msg) {
