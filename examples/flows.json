@@ -30,7 +30,6 @@
         "z": "e468bcf7a6ec520d",
         "name": "",
         "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss.xml",
-        "interval": "60",
         "ignorefirst": false,
         "x": 510,
         "y": 180,
