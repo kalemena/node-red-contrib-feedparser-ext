@@ -20,7 +20,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 900,
+        "x": 580,
         "y": 180,
         "wires": []
     },
@@ -29,9 +29,9 @@
         "type": "feedparse-ext",
         "z": "e468bcf7a6ec520d",
         "name": "",
-        "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss.xml",
+        "url": "https://www.dealabs.com/rss/hot",
         "ignorefirst": false,
-        "x": 510,
+        "x": 350,
         "y": 180,
         "wires": [
             [

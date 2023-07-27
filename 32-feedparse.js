@@ -13,6 +13,7 @@ module.exports = function(RED) {
         // this.interval_id = null;
         this.ignorefirst = n.ignorefirst || false;
         this.seen = {};
+        this.seenCycle = [];
         this.donefirst = false;
         var node = this;
         var parsedUrl = url.parse(this.url);
@@ -27,6 +28,7 @@ module.exports = function(RED) {
                 req.setHeader('accept', 'application/rss+xml,text/html,application/xhtml+xml,application/xml');
 
                 var feedparser = new FeedParser();
+                node.seenCycle = []
 
                 req.on('error', function(err) { node.error(err); });
 
@@ -40,14 +42,16 @@ module.exports = function(RED) {
                 feedparser.on('readable', function () {
                     var stream = this, article;
                     while (article = stream.read()) {  // jshint ignore:line
+                        node.seenCycle.push(article.guid)
                         // if: Article UUID never seen or Date updated
                         if (!(article.guid in node.seen) || ( node.seen[article.guid] !== 0 && node.seen[article.guid] != article.date.getTime())) {
                             node.seen[article.guid] = article.date ? article.date.getTime() : 0;
                             var msg = {
                                 topic: article.origlink || article.link,
                                 payload: article.description,
-                                article: article,
-                                seenCount: Object.keys(node.seen).length
+                                article: article
+                                //seenCount: Object.keys(node.seen).length,
+                                //seenCycle: node.seenCycle.length
                             };
 
                             if (node.ignorefirst === true && node.donefirst === false) {
@@ -61,7 +65,17 @@ module.exports = function(RED) {
                 });
 
                 feedparser.on('meta', function (meta) {});
-                feedparser.on('end', function () {});
+                feedparser.on('end', function () {
+                    // cleanup previous article guid
+                    Object.keys(node.seen).forEach(function(key) {
+                        if(!node.seenCycle.includes(key)) {
+                            // console.log("DELETE " + key);
+                            delete node.seen[key]
+                        } else {
+                            // console.log("KEEP   " + key);    
+                        }
+                    })
+                });
             };
             // node.interval_id = setInterval(function() { node.donefirst = true; getFeed(); }, node.interval);
             // getFeed();
