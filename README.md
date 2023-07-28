@@ -29,6 +29,6 @@ Usage
 
 ### Input
 
-Monitors an RSS/atom feed for new entries.
+Triggers a request to fetch an RSS/atom feed for new entries.
 
-You can set the polling time in minutes. Defaults to 15 minutes.
+You can trigger using an Input parameter with interval. 
