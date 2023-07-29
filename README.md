@@ -12,6 +12,7 @@ Changes
 * Add Input parameter: allows to trigger externaly, and allows dynamic configuration
 * Remove internal timer and matching option: lets input to trigger fetch, with allowing to variabilise the timers.
 * Fix the never cleaned-up *seen* variable: the json object used internally to flag seen article was growing indefinitly with accumulating days of article in memory
+* Allows to customize url* of RSS feed by parameter *payload*
 
 
 

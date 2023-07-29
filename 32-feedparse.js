@@ -16,13 +16,14 @@ module.exports = function(RED) {
         this.seenCycle = [];
         this.donefirst = false;
         var node = this;
-        var parsedUrl = url.parse(this.url);
-        if (!(parsedUrl.host || (parsedUrl.hostname && parsedUrl.port)) && !parsedUrl.isUnix) {
-            node.error(RED._("feedparse-ext.errors.invalidurl"),RED._("feedparse-ext.errors.invalidurl"));
-        }
-        else {
-            var getFeed = function() {
-                var req = request(node.url, {timeout:10000, pool:false});
+
+        // var parsedUrl = url.parse(this.url);
+        // if (!(parsedUrl.host || (parsedUrl.hostname && parsedUrl.port)) && !parsedUrl.isUnix) {
+        //     node.error(RED._("feedparse-ext.errors.invalidurl"),RED._("feedparse-ext.errors.invalidurl"));
+        // }
+        // else {
+            var getFeed = function(urlOfFeed, msg) {
+                var req = request(urlOfFeed, {timeout:10000, pool:false});
                 //req.setMaxListeners(50);
                 req.setHeader('user-agent', 'Mozilla/5.0 (Node-RED)');
                 req.setHeader('accept', 'application/rss+xml,text/html,application/xhtml+xml,application/xml');
@@ -79,10 +80,22 @@ module.exports = function(RED) {
             };
             // node.interval_id = setInterval(function() { node.donefirst = true; getFeed(); }, node.interval);
             // getFeed();
-        }
+        //}
         
         node.on("input", function(msg) {
-            getFeed(msg);
+            var urlOfFeed;
+            if(msg.payload != null){
+                urlOfFeed = msg.payload;
+            } else {
+                urlOfFeed = node.url;
+            }
+
+            var parsedUrlOfFeed = url.parse(urlOfFeed);
+            if (!(parsedUrlOfFeed.host || (parsedUrlOfFeed.hostname && parsedUrlOfFeed.port)) && !parsedUrlOfFeed.isUnix) {
+                node.error(RED._("feedparse-ext.errors.invalidurl"),RED._("feedparse-ext.errors.invalidurl"));
+            }
+            
+            getFeed(urlOfFeed, msg);
         });
 
         node.on("close", function() {
