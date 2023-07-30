@@ -45,13 +45,14 @@ module.exports = function(RED) {
                     while (article = stream.read()) {  // jshint ignore:line
                         node.seenCycle.push(article.guid)
                         // if: Article UUID never seen or Date updated
-                        if (!(article.guid in node.seen) || ( node.seen[article.guid] !== 0 && node.seen[article.guid] != article.date.getTime())) {
-                            node.seen[article.guid] = article.date ? article.date.getTime() : 0;
+                        node.seen[urlOfFeed] = node.seen[urlOfFeed] || {}
+                        if (!(article.guid in node.seen[urlOfFeed]) || ( node.seen[urlOfFeed][article.guid] !== 0 && node.seen[urlOfFeed][article.guid] != article.date.getTime())) {
+                            node.seen[urlOfFeed][article.guid] = article.date ? article.date.getTime() : 0;
                             var msg = {
                                 topic: article.origlink || article.link,
                                 payload: article.description,
                                 article: article
-                                //seenCount: Object.keys(node.seen).length,
+                                //seenCount: Object.keys(node.seen[urlOfFeed]).length,
                                 //seenCycle: node.seenCycle.length
                             };
 
@@ -68,10 +69,11 @@ module.exports = function(RED) {
                 feedparser.on('meta', function (meta) {});
                 feedparser.on('end', function () {
                     // cleanup previous article guid
-                    Object.keys(node.seen).forEach(function(key) {
+                    // console.log("URL: " + urlOfFeed)
+                    Object.keys(node.seen[urlOfFeed]).forEach(function(key) {
                         if(!node.seenCycle.includes(key)) {
                             // console.log("DELETE " + key);
-                            delete node.seen[key]
+                            delete node.seen[urlOfFeed][key]
                         } else {
                             // console.log("KEEP   " + key);    
                         }
