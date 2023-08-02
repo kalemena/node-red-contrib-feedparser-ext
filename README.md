@@ -10,9 +10,11 @@ Changes
 -------
 
 * Add Input parameter: allows to trigger externaly, and allows dynamic configuration
-* Remove internal timer and matching option: lets input to trigger fetch, with allowing to variabilise the timers.
+* Remove internal timer and matching option: 
+this lets input node to trigger fetch, which enables use case like scheduling instead of fixed poll interval.
 * Fix the never cleaned-up *seen* variable: the json object used internally to flag seen article was growing indefinitly with accumulating days of article in memory
-* Allows to customize url* of RSS feed by parameter *payload*
+* Allows to customize *url* of RSS feed by parameter *payload*
+
 
 
 
@@ -28,8 +30,6 @@ Run the following command in your Node-RED user directory - typically `~/.node-r
 Usage
 -----
 
-### Input
-
 Triggers a request to fetch an RSS/atom feed for new entries.
-
-You can trigger using an Input parameter with interval. 
+You can trigger using an Input parameter with interval.
+You can pass in *payload* to specify URL of RSS Feed.

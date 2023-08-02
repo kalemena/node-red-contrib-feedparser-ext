@@ -43,7 +43,7 @@
         "id": "a288824ed469869e",
         "type": "inject",
         "z": "e468bcf7a6ec520d",
-        "name": "https://www.dealabs.com/rss/hot",
+        "name": "Multiple Feeds",
         "props": [
             {
                 "p": "payload"
@@ -56,7 +56,7 @@
         "topic": "",
         "payload": "[\"https://www.dealabs.com/rss/hot\",\"https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss.xml\"]",
         "payloadType": "json",
-        "x": 190,
+        "x": 140,
         "y": 180,
         "wires": [
             [
