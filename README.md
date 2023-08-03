@@ -11,9 +11,10 @@ Changes
 
 * Add Input parameter: allows to trigger externaly, and allows dynamic configuration
 * Remove internal timer and matching option: 
-this lets input node to trigger fetch, which enables use case like scheduling instead of fixed poll interval.
+This lets input node to trigger fetch, which enables use case like scheduling instead of fixed poll interval.
 * Fix the never cleaned-up *seen* variable: the json object used internally to flag seen article was growing indefinitly with accumulating days of article in memory
 * Allows to customize *url* of RSS feed by parameter *payload*
+This permits to source a list of URLs from external content, therefore allowing for example a Personal Assistant module to add/remove URLs dynamicaly.
 
 
 
