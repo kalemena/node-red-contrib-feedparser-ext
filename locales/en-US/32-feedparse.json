@@ -3,14 +3,11 @@
         "feedparse-ext": "feedparser-ext",
         "label": {
             "feedurl": "Feed url",
-            "refresh": "Refresh",
-            "minutes": "minutes",
             "ignorefirst": "Ignore any stories older than restart"
         },
         "errors": {
             "badstatuscode": "error - Bad status code",
-            "invalidurl": "Invalid url",
-            "invalidinterval": "Repeat interval too large"
+            "invalidurl": "Invalid url"
         }
     }
 }
