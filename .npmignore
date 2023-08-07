@@ -2,8 +2,10 @@
 *
 # But these ...
 !package.json
-!32-*
+!package-lock.json
+!32-feedparse.html
+!32-feedparse.js
 !README.md
 !LICENSE
-!examples
+!examples/flows.json
 !locales
