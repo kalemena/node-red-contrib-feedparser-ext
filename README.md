@@ -31,5 +31,7 @@ Usage
 -----
 
 Triggers a request to fetch an RSS/atom feed for new entries.
+
 You can trigger using an Input parameter at regular or dynamic interval.
+
 Parameter *payload* can be specified as URL of RSS Feed, or if not specified, configuration option is used.
