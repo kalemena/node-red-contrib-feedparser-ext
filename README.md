@@ -1,4 +1,4 @@
-node-red-node-feedparser-ext
+node-red-contrib-feedparser-ext
 ============================
 
 **This repository is a copy/forked from official Node-Red Feedparser**
@@ -25,7 +25,7 @@ Install
 
 Run the following command in your Node-RED user directory - typically `~/.node-red`
 
-        npm install node-red-node-feedparser-ext
+        npm install node-red-contrib-feedparser-ext
 
 Usage
 -----
