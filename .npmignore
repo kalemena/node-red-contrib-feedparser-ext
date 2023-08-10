@@ -8,4 +8,5 @@
 !README.md
 !LICENSE
 !examples/flows.json
-!locales
+!locales/en-US/32-feedparse.html
+!locales/en-US/32-feedparse.json
